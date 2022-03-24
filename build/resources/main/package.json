@@ -1,0 +1,320 @@
+{
+    "name": "Secrets_Uts",
+    "label": "Secrets_Uts",
+    "description": "",
+    "group": "com.automationanywhere",
+    "artifactName": "Secrets_Uts",
+    "packageVersion": "2.2-20220318-170847",
+    "codeVersion": "2.2-20220318-170847",
+    "author": "",
+    "commands": [
+        {
+            "name": "aes256gcm_Decrypt",
+            "label": "aes256gcm_Decrypt",
+            "description": "Decript data using Content,IV,Key and/or Tag\n All data instead Content should be used as Hex input!",
+            "mainClass": "com.automationanywhere.botcommand.samples.commands.basic.aes256gcm_DecryptCommand",
+            "icon": "pkg.svg",
+            "returnType": "STRING",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "",
+            "returnRequired": true,
+            "attributes": [
+                {
+                    "name": "ContentType",
+                    "label": "Content Format Input:",
+                    "type": "SELECT",
+                    "defaultValue": {
+                        "string": "Base64",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "Hex",
+                            "value": "Hex"
+                        },
+                        {
+                            "label": "Base64",
+                            "value": "Base64"
+                        }
+                    ]
+                },
+                {
+                    "name": "Content",
+                    "label": "Content",
+                    "description": "the value that will be decrypted",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "isTag",
+                    "label": "Tag:",
+                    "description": "If tag value is not included in Content value inform it here!",
+                    "type": "CHECKBOX",
+                    "defaultValue": {
+                        "boolean": false,
+                        "type": "BOOLEAN"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ],
+                    "attributes": [
+                        {
+                            "name": "Tag",
+                            "label": "Tag:",
+                            "description": "the tag value that will be used to decrypt content",
+                            "type": "TEXT",
+                            "rules": [
+                                {
+                                    "name": "NOT_EMPTY"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Key",
+                    "label": "Key",
+                    "description": "the key that will be used to decrypt content",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "Iv",
+                    "label": "Iv",
+                    "description": "the iv that will be used to decrypt content",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "AesDecrypt",
+            "label": "AesDecrypt",
+            "description": "Decrypts an AES format",
+            "mainClass": "com.automationanywhere.botcommand.samples.commands.basic.AesDecryptCommand",
+            "icon": "pkg.svg",
+            "returnType": "STRING",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "",
+            "returnRequired": true,
+            "attributes": [
+                {
+                    "name": "hash",
+                    "label": "Hash",
+                    "description": "The value that will be used to be decrypted",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "key",
+                    "label": "Key",
+                    "description": "The key that will be used to decrypt the hash",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "AesEncrypt",
+            "label": "AesEncrypt",
+            "description": "Encrypts an value to AES format",
+            "mainClass": "com.automationanywhere.botcommand.samples.commands.basic.AesEncryptCommand",
+            "icon": "pkg.svg",
+            "returnType": "STRING",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "",
+            "returnRequired": true,
+            "attributes": [
+                {
+                    "name": "value",
+                    "label": "Value",
+                    "description": "the value that will be used to generate the hash",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "key",
+                    "label": "Key",
+                    "description": "the key that will be used to generate the hash",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "GetCredential",
+            "label": "GetCredential",
+            "description": "This action returns a credetial as string",
+            "mainClass": "com.automationanywhere.botcommand.samples.commands.basic.GetCredentialCommand",
+            "icon": "pkg.svg",
+            "returnType": "STRING",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "",
+            "returnRequired": true,
+            "attributes": [
+                {
+                    "name": "Credential",
+                    "label": "Credential",
+                    "type": "CREDENTIAL",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "randomPassword",
+            "label": "randomPassword",
+            "description": "Generate a random password",
+            "mainClass": "com.automationanywhere.botcommand.samples.commands.basic.randomPasswordCommand",
+            "icon": "pkg.svg",
+            "returnType": "STRING",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "",
+            "returnRequired": true,
+            "attributes": [
+                {
+                    "name": "numSpecial",
+                    "label": "Special Char",
+                    "description": "Number of special chars",
+                    "type": "NUMBER",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "numUpper",
+                    "label": "Upper Char",
+                    "description": "Number of upper chars",
+                    "type": "NUMBER",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "numlower",
+                    "label": "Lower Char",
+                    "description": "Number of lower chars",
+                    "type": "NUMBER",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "numNumbers",
+                    "label": "Number Char",
+                    "description": "Number of number chars",
+                    "type": "NUMBER",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "TextToHmacSHA256",
+            "label": "TextToHmacSHA256",
+            "description": "Encript a text to HmacSHA256",
+            "mainClass": "com.automationanywhere.botcommand.samples.commands.basic.TextToHmacSHA256Command",
+            "icon": "pkg.svg",
+            "returnType": "STRING",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "",
+            "returnRequired": true,
+            "attributes": [
+                {
+                    "name": "value",
+                    "label": "Value",
+                    "description": "the value that will be used to generate the hash",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "key",
+                    "label": "Key",
+                    "description": "the key that will be used to generate the hash",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "OutputType",
+                    "label": "OutPut Format:",
+                    "description": "the hash code will be converted to according output",
+                    "type": "SELECT",
+                    "defaultValue": {
+                        "string": "String",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "String",
+                            "value": "String"
+                        },
+                        {
+                            "label": "Base64",
+                            "value": "Base64"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
