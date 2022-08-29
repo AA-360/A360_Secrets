@@ -4,8 +4,8 @@
     "description": "",
     "group": "com.automationanywhere",
     "artifactName": "Secrets_Uts",
-    "packageVersion": "2.2-20220318-170847",
-    "codeVersion": "2.2-20220318-170847",
+    "packageVersion": "2.2-20220418-163732",
+    "codeVersion": "2.2-20220418-163732",
     "author": "",
     "commands": [
         {
