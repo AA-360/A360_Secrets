@@ -7,6 +7,8 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.swing.*;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.charset.Charset;
@@ -14,20 +16,68 @@ import java.nio.charset.StandardCharsets;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.Jws;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 import java.security.SecureRandom;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Random;
+import java.time.Instant;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import com.automationanywhere.botcommand.data.Value;
 import org.apache.commons.codec.binary.Hex;
 
+import io.jsonwebtoken.SignatureAlgorithm;
+import javax.crypto.spec.SecretKeySpec;
+import java.security.Key;
+import java.util.Base64;
+
+
 public class TEST {
+
+
+    @Test
+    public void cmd()throws Exception{
+
+        String command = "powershell -command \"get-appxpackage\"";
+
+        ProcessBuilder builder = new ProcessBuilder(
+                "cmd.exe", "/c", command);
+        builder.redirectErrorStream(true);
+        Process p = builder.start();
+        BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String line;
+        String text = "";
+        while (true) {
+            line = r.readLine();
+            if (line == null) { break; }
+            text += "\n" + line;
+            //System.out.println(line);
+        }
+        System.out.println(text);
+
+    }
+    public void jwt(){
+
+        CreateJwt a = new CreateJwt();
+
+        Map<String, Value> dict = new HashMap<>();
+        dict.put("nome",new StringValue("Melque"));
+        dict.put("idade",new StringValue("1.24"));
+        String token = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4";
+        byte[] aa = Base64.getDecoder().decode(token);
+
+        String jwt = a.action(dict,false,1.0,true,token).toString();
+
+        System.out.println(jwt);
+
+    }
 
 
     public void generate_password(){
@@ -39,7 +89,7 @@ public class TEST {
 
     }
 
-    @Test
+    //@Test
     public void AesPassword(){
         AesEncrypt aei = new AesEncrypt();
         AesDecrypt aed = new AesDecrypt();

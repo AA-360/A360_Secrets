@@ -4,8 +4,8 @@
     "description": "",
     "group": "com.automationanywhere",
     "artifactName": "Secrets_Uts",
-    "packageVersion": "2.2-20220418-163732",
-    "codeVersion": "2.2-20220418-163732",
+    "packageVersion": "2.4-20221221-103828",
+    "codeVersion": "2.4-20221221-103828",
     "author": "",
     "commands": [
         {
@@ -171,6 +171,90 @@
                     "rules": [
                         {
                             "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "CreateJwt",
+            "label": "CreateJwt",
+            "description": "This action creates a JWT token",
+            "mainClass": "com.automationanywhere.botcommand.samples.commands.basic.CreateJwtCommand",
+            "icon": "pkg.svg",
+            "returnType": "STRING",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "",
+            "returnRequired": true,
+            "attributes": [
+                {
+                    "name": "dict",
+                    "label": "Fields:",
+                    "description": "Key and value to be attached to the jwt token",
+                    "type": "DICTIONARY",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        },
+                        {
+                            "name": "VARIABLE_TYPE",
+                            "value": "DICTIONARY"
+                        }
+                    ]
+                },
+                {
+                    "name": "bol_exp",
+                    "label": "Exp:",
+                    "description": "Provide a expiration time",
+                    "type": "CHECKBOX",
+                    "defaultValue": {
+                        "boolean": false,
+                        "type": "BOOLEAN"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ],
+                    "attributes": [
+                        {
+                            "name": "exp",
+                            "label": "Minutes:",
+                            "description": "will expire in the provided minutes",
+                            "type": "NUMBER",
+                            "rules": [
+                                {
+                                    "name": "NOT_EMPTY"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "bol_tkn",
+                    "label": "Token:",
+                    "description": "Provide a token validator",
+                    "type": "CHECKBOX",
+                    "defaultValue": {
+                        "boolean": false,
+                        "type": "BOOLEAN"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ],
+                    "attributes": [
+                        {
+                            "name": "token",
+                            "label": "Token:",
+                            "description": "Provide a token validator",
+                            "type": "TEXT",
+                            "rules": [
+                                {
+                                    "name": "NOT_EMPTY"
+                                }
+                            ]
                         }
                     ]
                 }
