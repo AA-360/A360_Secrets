@@ -81,6 +81,7 @@ public class CreateJwt {
         JwtBuilder jwt = Jwts.builder();
 
         if(bol_tkn) {
+            String tkn = Base64.getDecoder().decode(token).toString();
             Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(token), SignatureAlgorithm.HS256.getJcaName());
             jwt.signWith(hmacKey);
         }

@@ -42,7 +42,7 @@ import java.util.Base64;
 public class TEST {
 
 
-    @Test
+
     public void cmd()throws Exception{
 
         String command = "powershell -command \"get-appxpackage\"";
@@ -63,17 +63,19 @@ public class TEST {
         System.out.println(text);
 
     }
+
+    @Test
     public void jwt(){
 
         CreateJwt a = new CreateJwt();
 
         Map<String, Value> dict = new HashMap<>();
-        dict.put("nome",new StringValue("Melque"));
-        dict.put("idade",new StringValue("1.24"));
-        String token = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4";
+        dict.put("case_number",new StringValue("60-160590337"));
+        String token = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf444";
+        token=         "2F078FF4F34A3C1D59A3DD1EAC85E629C92800814BB442E81AA36684";
         byte[] aa = Base64.getDecoder().decode(token);
 
-        String jwt = a.action(dict,false,1.0,true,token).toString();
+        String jwt = a.action(dict,true,1.0,true,token).toString();
 
         System.out.println(jwt);
 
